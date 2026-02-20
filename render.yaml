@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: route-a1-french
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm install -g http-server && http-server dist -p 3000
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CI
+        value: false
+    autoDeploy: true
+    healthCheckPath: /
